@@ -3,14 +3,22 @@
 from urllib.parse import urlparse, urlsplit, urljoin, parse_qs, parse_qsl
 
 url = 'http://www.python.org:80/guido/python.html;philosophy?overall=3#here'
-result = urlparse(url)
-print(result, type(result))
+result_urlparse = urlparse(url)
+print(result_urlparse, type(result_urlparse))
 
-result1 = urlsplit(url)
-print(result1, type(result))
+result_urlsplit = urlsplit(url)
+print(result_urlsplit, type(result_urlsplit))
 
-# parse_qs 함수코드
-parse_qs()
+# parse_qs 함수코드 - .html 이후의 것을 = 을 기준으로 딕셔너리의 형태로 저장하는 듯
+result_parse_qs = parse_qs(url)
+print(result_parse_qs, type(result_parse_qs))
+
+base = 'www.google.com'
+url = '/search?q=fragment&oq=fragment&aqs=chrome..69i57j0l5.1165j0j7&sourceid=chrome&ie=UTF-8'
+# 라고 한다면 해당 유알엘을 그냥 조인 하여 사용 할 수 있으려나.
+
+result_urljoin = urljoin(base = base, url = url)
+print(result_urljoin, type(result_urljoin))
 
 '''
 def parse_qs(qs, keep_blank_values=False, strict_parsing=False, encoding='utf-8', errors='replace'):
@@ -26,8 +34,8 @@ def parse_qs(qs, keep_blank_values=False, strict_parsing=False, encoding='utf-8'
             parsed_result[name] = [value]
     return parsed_result
     '''
+# 위의 parse_qs 는 내부에서 아래의 함수를 호출....
 
-parse_qsl()
 '''
 def parse_qsl(qs, keep_blank_values=False, strict_parsing=False,
               encoding='utf-8', errors='replace'):
@@ -62,8 +70,13 @@ def parse_qsl(qs, keep_blank_values=False, strict_parsing=False,
 
 # parse 쿼리의 설명
 # 요약하자면 문자열로 명시된 아규먼트에 대한 응답을 가져온다.
-# qs : 퍼센트-인코디드 쿼리스트링 (가져와야할)
-# keep_blank_value : 
+# qs : 퍼센트-인코디드 쿼리스트링 (가져와야 할 요청)
+# keep_blank_value : 공백값을 그대로 유지할 것인지에 대한 옵션, 파라미터의 값은 boolean
+# strict_parsing : 파싱에러 처리에 관한 옵션,
+#                  true 이면 에러 발생 시 ValueError 반환
+#                  false 이면 에러 발생 시 무시
+# encoding : 파싱될 데이터의 인코딩 값 명시, errors 는 지난번 사용해 보았던 'replace' 옵션 디폴트
+
 """Parse a query given as a string argument.
 
         Arguments:
@@ -86,8 +99,6 @@ def parse_qsl(qs, keep_blank_values=False, strict_parsing=False,
 
         Returns a dictionary.
 """
-
-
 
 # urljoin 함수
 '''
@@ -159,5 +170,3 @@ def urljoin(base, url, allow_fragments=True):
     return _coerce_result(urlunparse((scheme, netloc, '/'.join(
         resolved_path) or '/', params, query, fragment)))
         '''
-result1 = urljoin(url)
-print(result1, type(result))
