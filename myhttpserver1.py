@@ -11,6 +11,5 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
 
 # 서버 구동
 httpd = HTTPServer(('', port), MyHTTPRequestHandler)
-
 print("HTTP Server started.....")
 httpd.serve_forever()
