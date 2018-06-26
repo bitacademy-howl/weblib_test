@@ -49,12 +49,14 @@ def main():
     # handle_starttag(), 혹은 endtag등 pass 매서드들을 오버라이딩 하여 원하는 결과를 얻어낼 수 있다.
     # 이와 같은 방법으로 웹 크롤링 시 링크를 계속 타고 파싱하여 데이터를 수집하는 등 활용할 수 있겠다.
 
+
     # 아래는 파서가 가진 결과물을 따로 저장하는 것인데....
     dataset = set(x for x in parser.result)
     # 아래와 같이 써도 객체가 값을 항상 가지고 있으므로 따로 저장해 놓을 필요는 없겠다.
     # 비교  -------
     print(dataset, type(dataset))
     print(parser.result, type(parser.result))
+
 
     # 아래는 데이터 파서가 추출한 result set (sub url : 디렉토리 및 파일명)을 이용하여 해당 이미지를
     # HTTP 로 요청하고, 그 결과를 받아와 파일에 저장하는 단계이다.
