@@ -15,8 +15,8 @@ print(result_parse_qs, type(result_parse_qs))
 
 base = 'www.google.com'
 url = '/search?q=fragment&oq=fragment&aqs=chrome..69i57j0l5.1165j0j7&sourceid=chrome&ie=UTF-8'
-# 라고 한다면 해당 유알엘을 그냥 조인 하여 사용 할 수 있으려나.
 
+# 라고 한다면 해당 유알엘을 그냥 조인 하여 사용 할 수 있으려나.
 result_urljoin = urljoin(base = base, url = url)
 print(result_urljoin, type(result_urljoin))
 
