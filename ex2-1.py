@@ -13,12 +13,14 @@ print(result_urlsplit, type(result_urlsplit))
 result_parse_qs = parse_qs(url)
 print(result_parse_qs, type(result_parse_qs))
 
-base = 'www.google.com'
-url = '/search?q=fragment&oq=fragment&aqs=chrome..69i57j0l5.1165j0j7&sourceid=chrome&ie=UTF-8'
+base = 'www.google.com/dict/hi/hello'
+url = 'hello/search?q=fragment&oq=fragment&aqs=chrome..69i57j0l5.1165j0j7&sourceid=chrome&ie=UTF-8'
 
 # 라고 한다면 해당 유알엘을 그냥 조인 하여 사용 할 수 있으려나.
 result_urljoin = urljoin(base = base, url = url)
 print(result_urljoin, type(result_urljoin))
+
+# 디렉터리들과 베이스 URL을 합치는 기능은 정의되어 있으며, base의 마지막 까지는 고정이어야 의미 있다.
 
 '''
 def parse_qs(qs, keep_blank_values=False, strict_parsing=False, encoding='utf-8', errors='replace'):
